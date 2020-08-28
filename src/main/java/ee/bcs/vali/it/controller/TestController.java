@@ -51,6 +51,6 @@ public class TestController {
     public int paaris(@RequestParam("id") Integer sisend){
         return Lesson2.exercise2(sisend);
     }
-    
+
 
 }
