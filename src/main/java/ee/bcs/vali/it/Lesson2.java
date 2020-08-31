@@ -90,7 +90,7 @@ public class Lesson2 {
             b) prindib konsoolile päeva, mil külastajaid oli kõige rohkem.
             Faili asukoht tuleb programmile ette anda käsurea parameetrina.
          */
-        File file = new File("C:\\Users\\opilane\\IdeaProjects\\vali-it\\resources\\visits.txt");
+        File file = new File("C:\\Users\\opilane\\Desktop\\vali-it\\resources\\visits.txt");
         Scanner scan = new Scanner(file);
         Map<String, String> visits = new HashMap<>();
         while(scan.hasNextLine()) {

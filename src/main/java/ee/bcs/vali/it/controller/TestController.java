@@ -1,14 +1,15 @@
 package ee.bcs.vali.it.controller;
 
-import ee.bcs.vali.it.Lesson1MathUtil;
-import ee.bcs.vali.it.Lesson2;
-import ee.bcs.vali.it.Lesson3;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import ee.bcs.vali.it.*;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class TestController {
+
+    private final List<Employees> employees = new ArrayList();
 
     @GetMapping("fact")
     public int fact(@RequestParam("id") Integer sisend){
@@ -20,7 +21,8 @@ public class TestController {
         return Lesson1MathUtil.abs(sisend);
     }
     @GetMapping("sort")
-    public int[] sort(@RequestParam("id") int[] sisend){
+    public int[] sort(@RequestParam("id") int[] sisend)
+    {
         return Lesson3.sort(sisend);
     }
     @GetMapping("sirime")
@@ -51,6 +53,40 @@ public class TestController {
     public int paaris(@RequestParam("id") Integer sisend){
         return Lesson2.exercise2(sisend);
     }
+    @GetMapping("dto")
+    public Auto dtoAuto(@RequestParam("aasta") int aasta, @RequestParam("mudel") String mudel,
+                        @RequestParam("kindl") boolean kindlustus){
+        Auto auto = new Auto();
+        auto.setAasta(aasta);
+        auto.setMudel(mudel);
+        auto.setKindlustus(kindlustus);
+        return auto;
 
-
+    }
+    @PostMapping("dto")
+    public void dtoAuto(@RequestBody Auto auto){
+        System.out.println(auto.getAasta());
+        System.out.println(auto.getMudel());
+        System.out.println(auto.isKindlustus());
+    }
+    @GetMapping("employee")
+    public List<Employees> getAllEmployees(){
+        return employees;
+    }
+    @PostMapping("employee")
+    public void addEmployee(@RequestBody Employees sisend){
+        employees.add(sisend);
+    }
+    @GetMapping("employee/{id}")
+    public Employees getIdEmployee(@PathVariable("id") int sisend){
+        return employees.get(sisend);
+    }
+    @PutMapping("employee/{id}")
+    public void putIdEmployee(@RequestBody Employees töötaja, @PathVariable("id") int sisend){
+        employees.set(sisend, töötaja);
+    }
+    @DeleteMapping("employee/{id}")
+    public void deleteEmployee(@PathVariable("id") int sisend){
+        employees.remove(sisend);
+    }
 }
