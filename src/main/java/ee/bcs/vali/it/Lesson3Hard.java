@@ -1,11 +1,12 @@
 package ee.bcs.vali.it;
 
 import java.util.Random;
+import java.util.Scanner;
 
 // Enne kui seda tegema hakkad tee ära Lesson 2 (välja arvatud ülesanded 6, 8, 9)
 public class Lesson3Hard {
     public static void main(String[] args) {
-
+        randomGame();
     }
 
     public static int evenFibonacci(int x){
@@ -18,9 +19,31 @@ public class Lesson3Hard {
         // iga kord pärast kasutaja sisestatud täis arvu peab programm ütlema kas number oli suurem või väiksem
         // ja kasutaja peab saama uuesti arvata
         // numbri ära aramise korral peab programm välja trükkima mitu katset läks numbri ära arvamiseks
-        Random random = new Random();
-        int i = random.nextInt(100);
-        System.out.println(i);
+        Random randomNumber = new Random();
+        int numberToGuess = randomNumber.nextInt(100);
+        int numberOfTries = 0;
+        Scanner scanner = new Scanner(System.in);
+        int guess;
+        boolean win = false;
+
+        while (win == false) {
+            System.out.println("Guess the number between 1 and 100. ");
+            guess = scanner.nextInt();
+            numberOfTries++;
+
+            if (guess == numberToGuess) {
+                win = true;
+                System.out.println("You guessed the correct number" + guess);
+            } else if (guess < numberToGuess) {
+                System.out.println("Number too LOW!!!");
+            } else if (guess > numberToGuess) {
+                System.out.println("Number too High!!!");
+            }
+
+        }
+        System.out.println("You WIN!!!");
+        System.out.println("The number was " + numberToGuess);
+        System.out.println("It took "+ numberOfTries + " guesses.");
     }
 
     public static String morseCode(String text){
