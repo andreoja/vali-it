@@ -1,6 +1,8 @@
 package ee.bcs.vali.it.controller;
 
 import ee.bcs.vali.it.Account;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -10,6 +12,27 @@ import java.util.Map;
 @RestController
 public class BankController {
     private static final Map<String, Double> bankAccount = new HashMap<>();
+
+//    @Autowired
+//    private NamedParameterJdbcTemplate bankDatabase;
+
+//    @Autowired
+//    private NamedParameterJdbcTemplate databaseName;
+//
+//    @GetMapping("sqltest")
+//    public String testSql(){
+//        String sql = "SELECT balance FROM account WHERE id= :id";
+//        Map<String, Object> paramMap = new HashMap<>();
+//        paramMap.put("id", 1);
+//        String vastus= databaseName.queryForObject(sql, paramMap, String.class);
+//
+//        sql="UPDATE account SET balance = :balance WHERE id = :id";
+//        paramMap.put("balance", 150);
+//        paramMap.put("id", 1);
+//        databaseName.update(sql, paramMap);
+//
+//        return vastus;
+//    }
 
     @PostMapping("account")
     public Double createAccount(@RequestBody Account accountNumber){

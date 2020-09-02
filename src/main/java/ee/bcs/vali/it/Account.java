@@ -1,8 +1,10 @@
 package ee.bcs.vali.it;
 
 public class Account {
+
     private String accountNr;
     private Double balance;
+
 
     public String getAccountNr() {
         return accountNr;
