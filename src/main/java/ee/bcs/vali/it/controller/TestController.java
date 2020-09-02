@@ -53,6 +53,11 @@ public class TestController {
     public int paaris(@RequestParam("id") Integer sisend){
         return Lesson2.exercise2(sisend);
     }
+//    @GetMapping("randomnumber")
+//    public void random(@RequestParam("id") Integer randomnumber){
+//        return Lesson3Hard.randomGame(randomnumber);
+//    }
+
     @GetMapping("dto")
     public Auto dtoAuto(@RequestParam("aasta") int aasta, @RequestParam("mudel") String mudel,
                         @RequestParam("kindl") boolean kindlustus){

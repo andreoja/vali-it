@@ -6,7 +6,7 @@ import java.util.Scanner;
 // Enne kui seda tegema hakkad tee ära Lesson 2 (välja arvatud ülesanded 6, 8, 9)
 public class Lesson3Hard {
     public static void main(String[] args) {
-        randomGame();
+//        randomGame();
     }
 
     public static int evenFibonacci(int x){
@@ -33,7 +33,7 @@ public class Lesson3Hard {
 
             if (guess == numberToGuess) {
                 win = true;
-                System.out.println("You guessed the correct number" + guess);
+                System.out.println("You guessed the correct number " + guess);
             } else if (guess < numberToGuess) {
                 System.out.println("Number too LOW!!!");
             } else if (guess > numberToGuess) {
