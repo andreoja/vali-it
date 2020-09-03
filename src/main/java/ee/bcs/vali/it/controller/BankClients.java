@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+//@RestController
 public class BankClients {
 
     @Autowired
@@ -60,7 +61,7 @@ public class BankClients {
 
 
     @GetMapping("transfer")
-    public void transferMoney(@RequestParam()String accountFrom,
+    public void transferMoneyFirst(@RequestParam()String accountFrom,
                                 @RequestParam()String accountTo,
                                 @RequestParam()BigDecimal amountToTransfer){
         String sql = "SELECT balance FROM account WHERE account_nr = :accountNr";

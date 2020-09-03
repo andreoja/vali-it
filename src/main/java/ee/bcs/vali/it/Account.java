@@ -1,5 +1,7 @@
 package ee.bcs.vali.it;
 
+import java.math.BigDecimal;
+
 public class Account {
 
     private String accountNr;
@@ -21,4 +23,6 @@ public class Account {
     public void setBalance(Double balance) {
         this.balance = balance;
     }
+
+
 }

@@ -1,15 +1,13 @@
 package ee.bcs.vali.it.controller;
 
 import ee.bcs.vali.it.Account;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+//@RestController
 public class BankController {
     private static final Map<String, Double> bankAccount = new HashMap<>();
 
