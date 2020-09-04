@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -37,6 +38,12 @@ public class BankSecondController {
     @PostMapping("addaccount")
     public void addaccount(@RequestBody Account2 request){
         accountService.addAccount(request.getFromAccount(),
-                request.getAmount());
+                request.getAmount(), request.getClientId());
     }
+    @PostMapping("addclient")
+    public BigInteger addclient(@RequestBody Account2 request){
+        return accountService.addClient(request.getFirstName(),
+                request.getLastName(), request.getClientId());
+    }
+
 }

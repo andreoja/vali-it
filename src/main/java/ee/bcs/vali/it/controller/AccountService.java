@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Service
 public class AccountService {
@@ -42,7 +43,11 @@ public class AccountService {
         return accountRepository.getBalance(fromAccount);
     }
 
-    public void addAccount(String fromAccount, BigDecimal balance) {
-        accountRepository.addAccount(fromAccount, balance);
+    public void addAccount(String fromAccount, BigDecimal balance, BigInteger clientId) {
+        accountRepository.addAccount(fromAccount, balance, clientId);
     }
+    public BigInteger addClient(String firstName, String lastName, BigInteger clientId) {
+        return accountRepository.addClient(firstName, lastName, clientId);
+    }
+
 }

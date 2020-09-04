@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet  author="andre"  id="2020-09-04">
+        <createTable tableName="client">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column  name="first_name"  type="text">
+                <constraints  nullable="false" />
+            </column>
+            <column  name="last_name"  type="text">
+                <constraints  nullable="false" />
+            </column>
+        </createTable>
+        <createTable  tableName="account">
+            <column  name="id"  type="int" autoIncrement="true">
+                <constraints  nullable="false"  primaryKey="true"/>
+            </column>
+            <column  name="account_nr"  type="text">
+                <constraints  nullable="false" />
+            </column>
+            <column  name="balance"  type="numeric">
+                <constraints  nullable="false" />
+            </column>
+            <column  name="client_id"  type="int">
+                <constraints  foreignKeyName="fk_account_client" nullable="false" references="client(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet  author="andre"  id="2020-09-05">
+        <createTable tableName="history">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column  name="account"  type="int">
+                <constraints foreignKeyName="fk_history_account" nullable="false" references="account(id)" />
+            </column>
+            <column  name="depo"  type="numeric">
+                <constraints nullable="true" />
+            </column>
+            <column name="withraw" type="numeric">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfer_in" type="numeric">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfer_out" type="numeric">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
