@@ -10,6 +10,42 @@ public class Account2 {
     private BigInteger clientId;
     private String firstName;
     private String lastName;
+    private BigDecimal depo;
+    private BigDecimal withraw;
+    private BigDecimal transferIn;
+    private BigDecimal transferOut;
+
+    public BigDecimal getDepo() {
+        return depo;
+    }
+
+    public void setDepo(BigDecimal depo) {
+        this.depo = depo;
+    }
+
+    public BigDecimal getWithraw() {
+        return withraw;
+    }
+
+    public void setWithraw(BigDecimal withraw) {
+        this.withraw = withraw;
+    }
+
+    public BigDecimal getTransferIn() {
+        return transferIn;
+    }
+
+    public void setTransferIn(BigDecimal transferIn) {
+        this.transferIn = transferIn;
+    }
+
+    public BigDecimal getTransferOut() {
+        return transferOut;
+    }
+
+    public void setTransferOut(BigDecimal transferOut) {
+        this.transferOut = transferOut;
+    }
 
     public String getFromAccount() {
         return fromAccount;

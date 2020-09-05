@@ -34,10 +34,12 @@ public class AccountService {
 
     }
     public void depositMoney(String fromAccount,
-                             BigDecimal amount) {
+                             BigDecimal amount,
+                             BigDecimal depo, BigDecimal account, BigDecimal withraw, BigDecimal transferIn, BigDecimal transferOut) {
         BigDecimal fromAccountBalance = accountRepository.getBalance(fromAccount);
         fromAccountBalance = fromAccountBalance.add(amount);
         accountRepository.updateBalance(fromAccount, fromAccountBalance);
+        accountRepository.updateHistory(depo, account, withraw, transferIn, transferOut);
     }
     public BigDecimal getAccountMoney(String fromAccount) {
         return accountRepository.getBalance(fromAccount);
