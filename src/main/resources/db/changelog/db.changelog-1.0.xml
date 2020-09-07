@@ -45,12 +45,6 @@
             <column name="withraw" type="numeric">
                 <constraints nullable="true" />
             </column>
-            <column name="transfer_in" type="numeric">
-                <constraints nullable="true" />
-            </column>
-            <column name="transfer_out" type="numeric">
-                <constraints nullable="true" />
-            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

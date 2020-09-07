@@ -24,12 +24,12 @@ public class BankSecondController {
     @GetMapping("withraw")
     public void withrawAccount(@RequestBody Account2 request){
         accountService.withrawMoney(request.getFromAccount(),
-                request.getAmount());
+                request.getAmount(), request.getAccountId());
     }
     @GetMapping("depoaccount")
     public void depositAccount(@RequestBody Account2 request){
         accountService.depositMoney(request.getFromAccount(),
-                request.getAmount());
+                request.getAmount(), request.getAccountId());
     }
     @GetMapping("getaccount")
     public BigDecimal getAccount(@RequestBody Account2 request){

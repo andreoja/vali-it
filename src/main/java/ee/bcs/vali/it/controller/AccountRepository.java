@@ -50,26 +50,26 @@ public class AccountRepository {
         paramMap1.put("clientId", clientId);
         return bankDatabase.queryForObject(sql, paramMap1, BigInteger.class);
     }
-    public void updateHistory(BigDecimal account, BigDecimal depo, BigDecimal withraw, BigDecimal transferIn, BigDecimal transferOut){
-        String sql = "UPDATE history SET depo = :depo WHERE account = :accountNumber";
+
+    public BigInteger getAccountId (String fromAccount){
+        String sql = "SELECT id FROM account WHERE account_nr = :accountNumber";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("depo", depo);
-        paramMap.put("accountNumber", account);
+        paramMap.put("accountNumber", fromAccount);
+        return bankDatabase.queryForObject(sql, paramMap, BigInteger.class);
+    }
+
+    public void updateHistoryWithraw(BigInteger accountId, BigDecimal withraw){
+        String sql = "INSERT INTO history (account_id,withraw) VALUES (:accountId, :withraw)";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("accountId", accountId);
+        paramMap.put("withraw", withraw);
         bankDatabase.update(sql, paramMap);
-        sql = "UPDATE history SET withraw = :withraw WHERE account = :accountNumber";
-        Map<String, Object> paramMap1 = new HashMap<>();
-        paramMap1.put("withraw", withraw);
-        paramMap1.put("accountNumber", account);
-        bankDatabase.update(sql, paramMap1);
-        sql = "UPDATE history SET transferIn = :transferIn WHERE account = :accountNumber";
-        Map<String, Object> paramMap2 = new HashMap<>();
-        paramMap2.put("transferIn", transferIn);
-        paramMap2.put("accountNumber", account);
-        bankDatabase.update(sql, paramMap2);
-        sql = "UPDATE history SET transferOut = :transferOut WHERE account = :accountNumber";
-        Map<String, Object> paramMap3 = new HashMap<>();
-        paramMap3.put("transferOut", transferOut);
-        paramMap3.put("accountNumber", account);
-        bankDatabase.update(sql, paramMap3);
+    }
+    public void updateHistoryDepo(BigInteger accountId, BigDecimal depo) {
+        String sql = "INSERT INTO history (account_id, depo) VALUES (:accountId, :depo)";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("accountId", accountId);
+        paramMap.put("depo", depo);
+        bankDatabase.update(sql, paramMap);
     }
 }

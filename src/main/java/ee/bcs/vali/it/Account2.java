@@ -14,6 +14,15 @@ public class Account2 {
     private BigDecimal withraw;
     private BigDecimal transferIn;
     private BigDecimal transferOut;
+    private BigInteger accountId;
+
+    public BigInteger getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(BigInteger accountId) {
+        this.accountId = accountId;
+    }
 
     public BigDecimal getDepo() {
         return depo;
