@@ -3,6 +3,7 @@ package ee.bcs.vali.it.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.image.BandCombineOp;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -31,15 +32,12 @@ public class AccountService {
             fromAccountBalance = fromAccountBalance.subtract(amount);
             accountRepository.updateBalance(fromAccount, fromAccountBalance);
         }
-
     }
     public void depositMoney(String fromAccount,
-                             BigDecimal amount,
-                             BigDecimal depo, BigDecimal account, BigDecimal withraw, BigDecimal transferIn, BigDecimal transferOut) {
+                             BigDecimal amount) {
         BigDecimal fromAccountBalance = accountRepository.getBalance(fromAccount);
         fromAccountBalance = fromAccountBalance.add(amount);
         accountRepository.updateBalance(fromAccount, fromAccountBalance);
-        accountRepository.updateHistory(depo, account, withraw, transferIn, transferOut);
     }
     public BigDecimal getAccountMoney(String fromAccount) {
         return accountRepository.getBalance(fromAccount);
